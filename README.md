@@ -5,9 +5,7 @@
   all teachers  
 .as administrator i can create accountes for teachers.   
 .as administrator i can update teacher's profile. 
-.as administrator i can delete teacher's accounte.  
-.as administrator i can have dashboarde of all teachers in school  
-.as administrator i can have dashboarde of all students in school.  
+.as administrator i can delete teacher's accounte.   
 .as administrator i can delete a student's accounte.  
 .as administrator i can create a student's accounte.  
 .as administrator i can ammend a student's profile.  
