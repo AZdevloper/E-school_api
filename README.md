@@ -20,7 +20,6 @@
 ##  student  
 .as a student i have dashboarde contains my teacher feedbacks.   
 .as a student i have dashboarde contains  my homwork.  
- my homwork.  
 .as a student i can login   
 .as a student i can log out.  
 
