@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->integer('salary');
+            $table->date('hire_date');
             $table->timestamps();
         });
     }
