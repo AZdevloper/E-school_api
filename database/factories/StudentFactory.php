@@ -18,6 +18,8 @@ class StudentFactory extends Factory
     {
         return [
             //
+            'grade_level' => fake()->randomNumber(),
+            'parent_name' => fake()->name(),
         ];
     }
 }

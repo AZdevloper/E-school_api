@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\HomeWork;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class HomeWorkSeeder extends Seeder
 {
@@ -15,5 +16,6 @@ class HomeWorkSeeder extends Seeder
     public function run()
     {
         //
+        HomeWork::factory()->count(5)->create();
     }
 }

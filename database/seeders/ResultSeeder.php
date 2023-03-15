@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Result;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +16,6 @@ class ResultSeeder extends Seeder
     public function run()
     {
         //
+        Result::factory()->count(5)->create();
     }
 }

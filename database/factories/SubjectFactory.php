@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,8 @@ class SubjectFactory extends Factory
     {
         return [
             //
+            'name' => fake()->name(),
+            'teacher_id' => Teacher::factory(),
         ];
     }
 }

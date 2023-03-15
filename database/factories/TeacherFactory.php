@@ -18,6 +18,8 @@ class TeacherFactory extends Factory
     {
         return [
             //
+            'salary' => fake()->randomNumber(),
+            'hire_date' => now(),
         ];
     }
 }

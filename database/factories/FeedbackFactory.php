@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,10 @@ class FeedbackFactory extends Factory
     {
         return [
             //
+            'title' => fake()->title(),
+            'content' => fake()->shuffleString(),
+            'student_id' => Student::factory(),
+            'teacher_id' => Teacher::factory(),
         ];
     }
 }

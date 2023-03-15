@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,9 @@ class HomeWorkFactory extends Factory
     {
         return [
             //
+            'title' => fake()->title(),
+            'content' => fake()->shuffleString(),
+            'teacher_id' => Teacher::factory(),
         ];
     }
 }
