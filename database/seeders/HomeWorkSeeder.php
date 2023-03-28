@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\HomeWork;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 
 class HomeWorkSeeder extends Seeder
 {

@@ -22,6 +22,8 @@ class HomeWorkFactory extends Factory
             'title' => fake()->title(),
             'content' => fake()->shuffleString(),
             'teacher_id' => Teacher::factory(),
+
+
         ];
     }
 }

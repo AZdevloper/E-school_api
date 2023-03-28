@@ -24,6 +24,8 @@ class FeedbackFactory extends Factory
             'content' => fake()->shuffleString(),
             'student_id' => Student::factory(),
             'teacher_id' => Teacher::factory(),
+
+
         ];
     }
 }

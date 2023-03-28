@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Teacher;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 
 class TeacherSeeder extends Seeder
 {
@@ -17,5 +19,6 @@ class TeacherSeeder extends Seeder
     {
         //
         Teacher::factory()->count(5)->create();
+
     }
 }

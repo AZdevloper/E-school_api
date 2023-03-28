@@ -95,3 +95,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 mysql php laravel  
 Html Css (bootstrap/tailwind)  
 javascript vue js/react  
+## run after cloning
+2.  composer install   
+3.  cp .env.example .env
+4.  php artisan key:generate    
+5.  php artisan migrate  
+6.  php artisan serve  
+7. Go to link localhost:8000  
+
+## fortify installation
+composer require laravel/fortify
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"

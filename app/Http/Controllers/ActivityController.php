@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\activity;
+use App\Http\Requests\StoreactivityRequest;
+use App\Http\Requests\UpdateactivityRequest;
 
-use App\Models\Subject;
-use App\Http\Requests\StoreSubjectRequest;
-use App\Http\Requests\UpdateSubjectRequest;
-
-
-class SubjectController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,12 +31,10 @@ class SubjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-
-     * @param  \App\Http\Requests\StoreSubjectRequest  $request
+     * @param  \App\Http\Requests\StoreactivityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubjectRequest $request)
-
+    public function store(StoreactivityRequest $request)
     {
         //
     }
@@ -46,12 +42,10 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
-
+    public function show(activity $activity)
     {
         //
     }
@@ -59,12 +53,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
-
+    public function edit(activity $activity)
     {
         //
     }
@@ -72,13 +64,11 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-
-     * @param  \App\Http\Requests\UpdateSubjectRequest  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Http\Requests\UpdateactivityRequest  $request
+     * @param  \App\Models\activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubjectRequest $request, Subject $subject)
-
+    public function update(UpdateactivityRequest $request, activity $activity)
     {
         //
     }
@@ -86,12 +76,10 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
-
+    public function destroy(activity $activity)
     {
         //
     }
