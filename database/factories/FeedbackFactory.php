@@ -25,6 +25,7 @@ class FeedbackFactory extends Factory
             'student_id' => Student::factory(),
             'teacher_id' => Teacher::factory(),
 
+
         ];
     }
 }

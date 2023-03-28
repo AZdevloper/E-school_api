@@ -17,7 +17,8 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            //  
+
+
             'grade_level' => fake()->randomNumber(),
             'parent_name' => fake()->name(),
         ];

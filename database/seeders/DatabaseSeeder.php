@@ -27,12 +27,15 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             AdminSeeder::class,
             StudentSeeder::class,
-            ActivitySeeder::class,
+
+            DailyActivitiesSeeder::class,
+
             EventSeeder::class,
             HomeWorkSeeder::class,
             ResultSeeder::class,
             FeedbackSeeder::class,
-            
-        ]);
-    }
+
+
+        ]);}
+
 }

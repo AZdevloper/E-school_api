@@ -20,7 +20,7 @@ class TeacherFactory extends Factory
             //
             'salary' => fake()->randomNumber(),
             'hire_date' => now(),
-          
+
         ];
     }
 }

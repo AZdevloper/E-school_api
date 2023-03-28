@@ -16,6 +16,11 @@ class TeacherController extends Controller
     public function index()
     {
         //
+
+        $teachers = Teacher::all();
+        // $respons =  ["total"=>5,"data"=>$teachers];
+        return  $teachers;
+
     }
 
     /**

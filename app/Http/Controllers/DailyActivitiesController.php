@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DailyActivities;
+use App\Http\Requests\StoreDailyActivitiesRequest;
+use App\Http\Requests\UpdateDailyActivitiesRequest;
 
-use App\Models\Subject;
-use App\Http\Requests\StoreSubjectRequest;
-use App\Http\Requests\UpdateSubjectRequest;
-
-
-class SubjectController extends Controller
+class DailyActivitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,12 +31,10 @@ class SubjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-
-     * @param  \App\Http\Requests\StoreSubjectRequest  $request
+     * @param  \App\Http\Requests\StoreDailyActivitiesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubjectRequest $request)
-
+    public function store(StoreDailyActivitiesRequest $request)
     {
         //
     }
@@ -46,12 +42,10 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\DailyActivities  $dailyActivities
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
-
+    public function show(DailyActivities $dailyActivities)
     {
         //
     }
@@ -59,12 +53,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\DailyActivities  $dailyActivities
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
-
+    public function edit(DailyActivities $dailyActivities)
     {
         //
     }
@@ -72,13 +64,11 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-
-     * @param  \App\Http\Requests\UpdateSubjectRequest  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Http\Requests\UpdateDailyActivitiesRequest  $request
+     * @param  \App\Models\DailyActivities  $dailyActivities
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubjectRequest $request, Subject $subject)
-
+    public function update(UpdateDailyActivitiesRequest $request, DailyActivities $dailyActivities)
     {
         //
     }
@@ -86,12 +76,10 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\DailyActivities  $dailyActivities
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
-
+    public function destroy(DailyActivities $dailyActivities)
     {
         //
     }
