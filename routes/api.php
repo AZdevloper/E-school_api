@@ -14,23 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// // middleware('auth:sanctum')->
-// Route::get('/users', function (Request $request) {
-//     $users = app\Http 
-//     return response()->json([
-//         'id' => $request->id,
-//         'name' => 'John Doe',
-                
-//         ]
-//     );
-// });
-
-
-Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
-    Route::get('teachers', 'index');
-    // Route::get('books/{id}', 'show')->middleware(['auth:sanctum','permission:list books']);
-    // Route::post('book', 'store')->middleware(['auth:sanctum','permission:add book']);
-    // Route::put('books/{id}', 'update')->middleware(['auth:sanctum','permission:edite book']);
-    // Route::delete('book/{id}', 'delete')->middleware(['auth:sanctum','permission:delete book']);
-    // Route::get('book/category/{id}', 'filter')->middleware(['auth:sanctum','permission:filter books']);
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return $request->user();
 });
