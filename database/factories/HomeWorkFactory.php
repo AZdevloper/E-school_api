@@ -2,12 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HomeWork>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Home_work>
  */
 class HomeWorkFactory extends Factory
 {
@@ -23,8 +22,6 @@ class HomeWorkFactory extends Factory
             'title' => fake()->title(),
             'content' => fake()->shuffleString(),
             'user_id' => User::factory(),
-
-
         ];
     }
 }

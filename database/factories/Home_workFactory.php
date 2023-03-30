@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Home_work>
  */
-class EventFactory extends Factory
+class Home_workFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +19,9 @@ class EventFactory extends Factory
     {
         return [
             //
-            'name' => fake()->name(),
-            'description' => fake()->shuffleString(),
-            'user_id' => User::factory(), 
+            'title' => fake()->title(),
+            'content' => fake()->shuffleString(),
+            'user_id' => User::factory(),
         ];
     }
 }

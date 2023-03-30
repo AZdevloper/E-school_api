@@ -1,7 +1,7 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
@@ -24,8 +24,6 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
@@ -64,45 +62,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-# planification
-# School-management  
-##  Admin  
-.as a administrator i want to have a dashboard that contains all students  
-.as a administrator i want to have a dashboard that contains all teachers  
-.as administrator i can create accountes for teachers.   
-.as administrator i can update teacher's profile. 
-.as administrator i can delete teacher's accounte.   
-.as administrator i can delete a student's accounte.  
-.as administrator i can create a student's accounte.  
-.as administrator i can ammend a student's profile.  
-
-##  teacher  
-.as a teacher i can have  all my students in the dashboard  
-.as a teacher i can see laste homwork asigned to students in the dashboard  
-.as a teacher i can login   
-.as a teacher i can log out  
-.as a teacher i can make feedbacks for my students class.  
-.as a teacher i want to be able to create and assign homework   
-
-##  student  
-.as a student i have dashboarde contains my teacher feedbacks.   
-.as a student i have dashboarde contains  my homwork.  
-.as a student i can login   
-.as a student i can log out.  
-
-## Technologies:  
-mysql php laravel  
-Html Css (bootstrap/tailwind)  
-javascript vue js/react  
-## run after cloning
-2.  composer install   
-3.  cp .env.example .env
-4.  php artisan key:generate    
-5.  php artisan migrate  
-6.  php artisan serve  
-7. Go to link localhost:8000  
-
-## fortify installation
-composer require laravel/fortify
-php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"

@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\daily_activity>
  */
-class EventFactory extends Factory
+class DailyActivityFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,8 +19,7 @@ class EventFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'description' => fake()->shuffleString(),
-            'user_id' => User::factory(), 
+            'description' => fake()->text(),
         ];
     }
 }
