@@ -20,9 +20,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
     Route::get('teachers', 'index');
-    // Route::get('book/{id}', 'show')->middleware(['auth:sanctum', 'permission:list books']);
-    // Route::post('book', 'store')->middleware(['auth:sanctum', 'permission:add book']);
-    // Route::put('book/{id}', 'update')->middleware(['auth:sanctum', 'permission:edit book']);
-    // Route::delete('book/{id}', 'destroy')->middleware(['auth:sanctum', 'permission:delete book']);
-    // Route::get('book/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter books']);
-});
+    // Route::get('teacher/{id}', 'show')->middleware(['auth:sanctum', 'permission:list teachers']);
+    Route::post('teacher', 'store');
+    Route::put('teacher/{id}', 'update');
+    Route::delete('teacher/{id}', 'destroy');
+    // Route::get('teacher/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
+})->middleware(['auth:sanctum', 'role:admin']);;
