@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             HomeWorkSeeder::class,
             ResultSeeder::class,
             FeedbackSeeder::class,
-            // RolesAndPermissionsSeeder::class
+            RolesAndPermissionsSeeder::class
 
 
         ]);
