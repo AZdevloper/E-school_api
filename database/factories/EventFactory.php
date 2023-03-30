@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,8 +24,7 @@ class EventFactory extends Factory
             //
             'name' => fake()->name(),
             'description' => fake()->shuffleString(),
-
-            'first_class' => Student::factory(),  
+            'user_id' => User::factory(),  
 
         ];
     }

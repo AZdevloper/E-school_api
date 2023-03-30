@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
-use App\Http\Requests\StoreTeacherRequest;
-use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class UserController extends Controller
 {
+    //
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   
+    public function getAllTeachers()
     {
-        //
+        $teachers = User::role('teacher')->get();
 
-        $teachers = User::all();
-        // $respons =  ["total"=>5,"data"=>$teachers];
-        return  $teachers;
-
+        return $teachers;
     }
+    public function getAllStudents()
+    {
+        $student = User::role('student')->get();
 
+        return $student;
+    }
 
 
     /**
@@ -99,4 +101,5 @@ class TeacherController extends Controller
     {
         //
     }
+
 }

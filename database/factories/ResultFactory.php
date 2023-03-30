@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class ResultFactory extends Factory
         return [
             //
             'mark_obtained' => fake()->randomNumber(),
-            'student_id' => Student::factory(),
+            'user_id' => User::factory(),
             'subject_id' => Subject::factory(),
         ];
     }

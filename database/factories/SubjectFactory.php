@@ -5,6 +5,7 @@ namespace Database\Factories;
 
 
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,7 +25,7 @@ class SubjectFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'teacher_id' => Teacher::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

@@ -20,8 +20,8 @@ class DailyActivitiesFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'description' => fake()->shuffleString(),
-            'first_class' => Student::factory(),
+            'description' => fake()->text(),
+            
         ];
     }
 }

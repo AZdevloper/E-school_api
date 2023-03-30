@@ -45,11 +45,11 @@ class RolesAndPermissionsSeeder extends Seeder
         }
 
         // give permissions to member role
-        $role = Role::create(['name' => 'member'])
+        Role::create(['name' => 'admin'])
         ->givePermissionTo(['list books', 'filter books']);
 
         // give permission to librarian role
-        $role = Role::create(['name' => 'librarian'])
+         Role::create(['name' => 'teacher'])
         ->givePermissionTo([
             'list books',
             'filter books',
@@ -59,7 +59,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete book'
         ]);
         // give permission to admin role    
-        $role = Role::create(['name' => 'admin'])
+       Role::create(['name' => 'student'])
         ->givePermissionTo([
             'list books',
             'filter books',

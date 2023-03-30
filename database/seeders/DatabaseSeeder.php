@@ -24,16 +24,13 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             UserSeeder::class,
-            TeacherSeeder::class,
-            AdminSeeder::class,
-            StudentSeeder::class,
-
             DailyActivitiesSeeder::class,
-
+            
             EventSeeder::class,
             HomeWorkSeeder::class,
             ResultSeeder::class,
             FeedbackSeeder::class,
+            RolesAndPermissionsSeeder::class
 
 
         ]);}
