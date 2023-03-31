@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class TeacherController extends Controller
 {
@@ -37,16 +38,21 @@ class TeacherController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'role' => 'required|string'
+            'password' => 'required|min:8|confirmed',
+            
         ]);
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->assignRole($request->role);
+        $user->assignRole("teacher");
         $user->save();
+        
+        return response([
+            'user' => $user,
+            'id' => $user->id,
+        ], Response::HTTP_CREATED);
     }
 
     /**

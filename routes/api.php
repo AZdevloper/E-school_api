@@ -20,9 +20,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
     Route::get('teachers', 'index');
-    // Route::get('teacher/{id}', 'show')->middleware(['auth:sanctum', 'permission:list teachers']);
-    Route::post('teacher', 'store');
-    Route::put('teacher/{id}', 'update');
-    Route::delete('teacher/{id}', 'destroy');
+    Route::get('teachers/{id}', 'show');
+    Route::post('teachers', 'store');
+    Route::put('teachers/{id}', 'update');
+    Route::delete('teachers/{id}', 'destroy');
     // Route::get('teacher/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 })->middleware(['auth:sanctum', 'role:admin']);;
