@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
-    Route::get('teachers', 'index');
+    Route::get('teachers', 'index')->middleware(['auth:sanctum']);
     Route::get('teachers/{id}', 'show');
     Route::post('teachers', 'store');
     Route::put('teachers/{id}', 'update');
