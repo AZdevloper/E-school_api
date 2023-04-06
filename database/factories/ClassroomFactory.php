@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Classroom>
  */
-class EventFactory extends Factory
+class ClassroomFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,9 +20,10 @@ class EventFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'description' => fake()->shuffleString(),
-            'date' => fake()->date(),
-            'user_id' => User::factory(), 
+            'subjectName' => fake()->text(),
+            'teacherName' => fake()->name(),
+            'NumberOfStudent' => fake()->randomNumber(),
+            'user_id' => User::factory(),
         ];
     }
 }

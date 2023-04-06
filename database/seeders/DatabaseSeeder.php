@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             HomeWorkSeeder::class,
             ResultSeeder::class,
             FeedbackSeeder::class,
+            ClassroomSeeder::class,
             RolesAndPermissionsSeeder::class
 
 
