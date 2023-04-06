@@ -21,6 +21,7 @@ class Home_workFactory extends Factory
             //
             'title' => fake()->title(),
             'content' => fake()->shuffleString(),
+            'deadline' => fake()->date(),
             'user_id' => User::factory(),
         ];
     }

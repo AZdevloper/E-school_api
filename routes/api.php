@@ -54,6 +54,15 @@ Route::controller(App\Http\Controllers\EventController::class)->group(function (
     // Route::get('events/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 })->middleware(['auth:sanctum', 'role:admin']);
 
+Route::controller(App\Http\Controllers\HomeWorkController::class)->group(function () {
+    Route::get('homeworks', 'index');
+    Route::get('homeworks/{id}', 'show');
+    Route::post('homeworks', 'store');
+    Route::put('homeworks/{id}', 'update');
+    Route::delete('homeworks/{id}', 'destroy');
+    // Route::get('homeworks/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
+})->middleware(['auth:sanctum', 'role:admin']);
+
 Route::controller(App\Http\Controllers\statisticController::class)->group(function () {
     Route::post('teacherCount', 'teachersCount');
     Route::get('studentCount', 'studentsCount');

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Home_work extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'content',
+        'deadline',
+        'user_id',
+    ];
+
 }
