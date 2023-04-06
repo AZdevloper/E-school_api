@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
     Route::get('teachers', 'index');
@@ -62,6 +62,15 @@ Route::controller(App\Http\Controllers\HomeWorkController::class)->group(functio
     Route::delete('homeworks/{id}', 'destroy');
     // Route::get('homeworks/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 })->middleware(['auth:sanctum', 'role:admin']);
+
+Route::controller(App\Http\Controllers\ResultController::class)->group(function () {
+    Route::get('results', 'index');
+    Route::get('results/{id}', 'show');
+    Route::post('results', 'store');
+    Route::put('results/{id}', 'update');
+    Route::delete('results/{id}', 'destroy');
+    // Route::get('results/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
+});
 
 Route::controller(App\Http\Controllers\statisticController::class)->group(function () {
     Route::post('teacherCount', 'teachersCount');

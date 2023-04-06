@@ -21,7 +21,8 @@ class ResultFactory extends Factory
         return [
             //
             'mark_obtained' => fake()->randomNumber(),
-            'user_id' => User::factory(),
+            'student_id' => User::factory(),
+            'teacher_id' => User::factory(),
             'subject_id' => Subject::factory(),
         ];
     }
