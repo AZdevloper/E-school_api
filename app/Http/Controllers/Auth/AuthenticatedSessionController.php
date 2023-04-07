@@ -15,37 +15,20 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): Response
+    public function store(LoginRequest $request): JsonResponse
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
         // return response()->noContent();
+        return response()->json(["api_token" =>     Auth::user()->createToken('api_token')->plainTextToken]);
 
         return response(
             UserResource::make($request->user())->jsonSerialize(),  
             Response::HTTP_OK
         );
-        // $session = $request->session();
-        // $response = response()->noContent();
 
-        // $cookies = collect($response->headers->getCookies())
-        // ->map(function ($cookie) {
-        //     return [
-        //         'name' => $cookie->getName(),
-        //         'value' => $cookie->getValue(),
-        //     ];
-        // })
-        // ->keyBy('name');
-
-        // $xsrfToken = $cookies->get('XSRF-TOKEN');
-        // $laravelSession = $cookies->get(config('session.cookie'));
-
-        // return response()->json([
-        //     'XSRF-TOKEN' => $xsrfToken['value'],
-        //     config('session.cookie') => $laravelSession['value'],
-        // ]);
     }
 
     /**

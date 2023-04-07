@@ -64,7 +64,7 @@ Route::controller(App\Http\Controllers\HomeWorkController::class)->group(functio
 })->middleware(['auth:sanctum', 'role:admin']);
 
 Route::controller(App\Http\Controllers\ResultController::class)->group(function () {
-    Route::get('results', 'index');
+    Route::get('results', 'index')->middleware(['auth:sanctum']);
     Route::get('results/{id}', 'show');
     Route::post('results', 'store');
     Route::put('results/{id}', 'update');
@@ -87,6 +87,8 @@ Route::controller(App\Http\Controllers\statisticController::class)->group(functi
     Route::get('classroomCount', 'classroomCount');
     Route::get('eventCount', 'eventCount');
     Route::get('incomingEvents', 'getIncomingEvents');
+    Route::get('incomingEventsCount', 'getIncomingEventsCount');
+    Route::get('absencesCount', 'getAbsenceCount');
     // Route::delete('students/{id}', 'destroy');
     // Route::get('students/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 });

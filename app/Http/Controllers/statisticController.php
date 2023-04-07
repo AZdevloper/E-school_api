@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classroom;
-use App\Models\Event;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Absence;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -43,5 +44,15 @@ class statisticController extends Controller
     {
         $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
         return Event::where('date', '>=', $now)->orderBy('date')->get();
+    }
+    public function getIncomingEventsCount()
+    {
+        $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
+        return Event::where('date', '>=', $now)->orderBy('date')->count();
+    }
+    public function getAbsenceCount()
+    {
+        $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
+        return Absence::where('date', '>=', $now)->orderBy('date')->count();
     }
 }

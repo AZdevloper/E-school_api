@@ -20,7 +20,7 @@ class ClassroomFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'subjectName' => fake()->text(),
+            'subjectName' => fake()->name(),
             'teacherName' => fake()->name(),
             'NumberOfStudent' => fake()->randomNumber(),
             'user_id' => User::factory(),
