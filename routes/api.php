@@ -73,10 +73,11 @@ Route::controller(App\Http\Controllers\ResultController::class)->group(function 
 });
 
 Route::controller(App\Http\Controllers\statisticController::class)->group(function () {
-    Route::post('teacherCount', 'teachersCount');
+    Route::get('teacherCount', 'teachersCount');
     Route::get('studentCount', 'studentsCount');
-    // Route::post('students', 'store');
-    // Route::put('students/{id}', 'update');
+    Route::get('classroomCount', 'classroomCount');
+    Route::get('eventCount', 'eventCount');
+    Route::get('incomingEvents', 'getIncomingEvents');
     // Route::delete('students/{id}', 'destroy');
     // Route::get('students/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 });

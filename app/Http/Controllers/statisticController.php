@@ -39,4 +39,9 @@ class statisticController extends Controller
 
         return $eventNumber;
     }
+    public function getIncomingEvents()
+    {
+        $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
+        return Event::where('date', '>=', $now)->orderBy('date')->get();
+    }
 }

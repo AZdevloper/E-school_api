@@ -21,7 +21,7 @@ class EventFactory extends Factory
             //
             'name' => fake()->name(),
             'description' => fake()->shuffleString(),
-            'date' => fake()->date(),
+            'date' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+1 year', $timezone = null), 
             'user_id' => User::factory(), 
         ];
     }
