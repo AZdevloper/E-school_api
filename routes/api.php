@@ -72,6 +72,15 @@ Route::controller(App\Http\Controllers\ResultController::class)->group(function 
     // Route::get('results/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 });
 
+Route::controller(App\Http\Controllers\AbsenceController::class)->group(function () {
+    Route::get('absences', 'index');
+    Route::get('absences/{id}', 'show');
+    Route::post('absences', 'store');
+    Route::put('absences/{id}', 'update');
+    Route::delete('absences/{id}', 'destroy');
+    // Route::get('results/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
+});
+
 Route::controller(App\Http\Controllers\statisticController::class)->group(function () {
     Route::get('teacherCount', 'teachersCount');
     Route::get('studentCount', 'studentsCount');
