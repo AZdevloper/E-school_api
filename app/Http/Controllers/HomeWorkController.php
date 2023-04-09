@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Home_work;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\HomeWorkResource;
+use App\Http\Resources\HomeWorkCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class HomeWorkController extends Controller
@@ -17,10 +21,11 @@ class HomeWorkController extends Controller
     public function index()
     {
         //
-        $homeWorks = Home_work::all();
+        $homeWorks = Home_work::with('user')->get();
 
-
-        return $homeWorks;
+        // return response()->json(new HomeWorkCollection($homeWorks))->withoutWrapping();
+        // return $homeWorks;  
+        return new HomeWorkCollection($homeWorks);
     }
 
 
@@ -33,11 +38,19 @@ class HomeWorkController extends Controller
     public function store(Request $request)
     {
         //
+        
+
+        // return new JsonResource(["message" => Auth::user()]);
+        
         $request->validate([
             'title' => 'required|string',
             'content' => 'required|string',
             'deadline'
-            => 'date_format:Y-m-d H:i:s',
+            => [
+                'required',
+                'date_format:Y-m-d',
+                'after:now',
+            ],
                              
             'user_id' => 'required|numeric',
 
@@ -46,7 +59,7 @@ class HomeWorkController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'deadline' => $request->deadline,
-            'user_id' => $request->user_id,
+            'user_id' => Auth::user()->id,
 
         ]);
 

@@ -39,14 +39,14 @@ class EventController extends Controller
             'description' => 'required|string',
             'date' =>
             'date_format:Y-m-d',
-            'user_id' => 'required|numeric',
+            // 'user_id' => 'required|numeric',
 
         ]);
         $event = new Event([
             'name' => $request->name,
             'description' => $request->description,
             'date' => $request->date,
-            'user_id' => $request->user_id,
+            // 'user_id' => $request->user_id,
 
         ]);
 
@@ -94,7 +94,7 @@ class EventController extends Controller
                 'description' => 'required|string',
                 'date' =>
                 'date_format:Y-m-d',
-                'user_id' => 'required|numeric',
+                // 'user_id' => 'required|numeric',
 
             ]);
 
@@ -102,7 +102,7 @@ class EventController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'date' => $request->date,
-                'user_id' => $request->user_id,
+                // 'user_id' => $request->user_id,
             ]);
             return $event;
         } else {

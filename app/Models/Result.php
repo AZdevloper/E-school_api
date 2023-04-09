@@ -15,4 +15,16 @@ class Result extends Model
         'teacher_id',
         'subject_id',
     ];
+    public function student()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function teacher()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

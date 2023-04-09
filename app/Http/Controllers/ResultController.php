@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Resources\ResultCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ResultController extends Controller
@@ -17,10 +18,10 @@ class ResultController extends Controller
     public function index()
     {
         //
-        $results = Result::all();
+        $results = Result::with('student','teacher')->get();
 
 
-        return $results;
+        return new ResultCollection($results) ;
     }
 
 

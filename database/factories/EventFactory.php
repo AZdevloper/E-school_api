@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,9 +21,9 @@ class EventFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'description' => fake()->shuffleString(),
+            'description' => Str::random(10),
             'date' => fake()->dateTimeBetween($startDate = 'now', $endDate = '+1 year', $timezone = null), 
-            'user_id' => User::factory(), 
+            // 'user_id' => User::factory(), 
         ];
     }
 }

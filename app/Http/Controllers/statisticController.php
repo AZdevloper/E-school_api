@@ -55,4 +55,26 @@ class statisticController extends Controller
         $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
         return Absence::where('date', '>=', $now)->orderBy('date')->count();
     }
+    public function adminDashboard(){
+        $teachersNumber = $this->teachersCount();
+        $studentsNumber = $this->studentsCount();
+        $classroomNumber = $this->classroomCount();
+        $eventNumber = $this->eventCount();
+        // $incomingEvents = $this->getIncomingEvents();
+        $incomingEventsCount = $this->getIncomingEventsCount();
+        $absenceCount = $this->getAbsenceCount();
+        // return json response
+        return response()->json([
+           [ 
+            'teachers' => $teachersNumber,
+            'students' => $studentsNumber,
+            'classes' => $classroomNumber,
+            'events' => $eventNumber,
+            // 'incomingEvents' => $incomingEvents,
+            'incomingEventsCount' => $incomingEventsCount,
+            // 'absenceCount' => $absenceCount
+            ]
+        ]);
+
+    }
 }

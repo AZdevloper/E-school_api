@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Absence;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Resources\AbsenceResource;
+use App\Http\Resources\Absencecollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AbsenceController extends Controller
@@ -18,11 +20,11 @@ class AbsenceController extends Controller
     public function index()
     {
         //
-        $absence = Absence::with([
+        $absences = Absence::with([
             'student' ,
             'teacher', 'subject'
         ])->get();
-        return $absence;
+        return new AbsenceCollection($absences) ;
     }
 
 

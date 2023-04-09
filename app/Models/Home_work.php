@@ -14,5 +14,9 @@ class Home_work extends Model
         'deadline',
         'user_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

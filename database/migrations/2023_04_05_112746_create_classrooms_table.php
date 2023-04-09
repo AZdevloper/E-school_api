@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('subjectName');
             $table->string('teacherName');
             $table->integer('NumberOfStudent');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->unsignedBigInteger('admin_id');
+            // $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

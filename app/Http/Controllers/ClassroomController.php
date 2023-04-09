@@ -39,7 +39,7 @@ class ClassroomController extends Controller
             'subjectName' => 'required|string',
             'teacherName' => 'required|string',
             'NumberOfStudent' => 'required|string',
-            'user_id' => 'required',
+            // 'user_id' => 'required',
 
         ]);
         $class = new Classroom([
@@ -47,7 +47,7 @@ class ClassroomController extends Controller
             'subjectName' => $request->subjectName,
             'teacherName' => $request->teacherName,
             'NumberOfStudent' => $request->NumberOfStudent,
-            'user_id' => $request->user_id,
+            // 'user_id' => $request->user_id,
             
         ]);
 
@@ -96,7 +96,7 @@ class ClassroomController extends Controller
                 'subjectName' => 'required|string',
                 'teacherName' => 'required|string',
                 'NumberOfStudent' => 'required|numeric',
-                'user_id' => 'required',
+                // 'user_id' => 'required',
 
             ]);
 
@@ -105,7 +105,7 @@ class ClassroomController extends Controller
                 'subjectName' => $request->subjectName,
                 'teacherName' => $request->teacherName,
                 'NumberOfStudent' => $request->NumberOfStudent,
-                'user_id' => $request->user_id,
+                // 'user_id' => $request->user_id,
             ]);
             return $class;
 

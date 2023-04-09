@@ -23,7 +23,7 @@ class ClassroomFactory extends Factory
             'subjectName' => fake()->name(),
             'teacherName' => fake()->name(),
             'NumberOfStudent' => fake()->randomNumber(),
-            'user_id' => User::factory(),
+            // 'admin_id' => User::factory(),
         ];
     }
 }
