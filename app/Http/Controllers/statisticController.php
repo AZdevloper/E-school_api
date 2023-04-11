@@ -65,7 +65,7 @@ class statisticController extends Controller
         $absenceCount = $this->getAbsenceCount();
         // return json response
         return response()->json([
-           [ 
+           [ 'id'=> 1,
             'teachers' => $teachersNumber,
             'students' => $studentsNumber,
             'classes' => $classroomNumber,
