@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Absence;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class statisticController extends Controller
@@ -77,4 +78,19 @@ class statisticController extends Controller
         ]);
 
     }
+    public function getAbsencesByMonth()
+    {
+        $absences = DB::table('absences')
+        ->select(DB::raw('MONTH(date) as month'), DB::raw('COUNT(*) as count'), DB::raw('MIN(id) as id'))
+        ->groupBy(DB::raw('MONTH(date)'))
+        ->get();
+
+        return $absences;
+    }
+
+
+
+
+
+
 }
