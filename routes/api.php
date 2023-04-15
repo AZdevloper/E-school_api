@@ -28,7 +28,7 @@ Route::controller(App\Http\Controllers\TeacherController::class)->group(function
 })->middleware(['auth:sanctum', 'role:admin']);
 
 Route::controller(App\Http\Controllers\StudentController::class)->group(function () {
-    Route::get('students', 'index');
+    Route::get('students', 'index')->middleware(['auth:sanctum']);
     Route::get('students/{id}', 'show');
     Route::post('students', 'store');
     Route::put('students/{id}', 'update');

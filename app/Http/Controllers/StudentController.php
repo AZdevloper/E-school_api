@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StudentCollection;
 use App\Models\User;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
+use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,10 +22,18 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
-        $studentRole = Role::where('name', 'student')->first();
-        $students = User::role($studentRole)->get();
-
+        //if user is admin
+        $user = Auth::user();
+        $students = [];
+        if ($user->hasRole('admin')) {
+            $studentRole = Role::where('name', 'student')->first();
+            $students = User::role($studentRole)->get();
+        } else {
+            $classroom = Classroom::with('teacher', 'subject', 'students')->where('teacher_id', $user->id)->first();
+            if ($classroom) {
+                $students = $classroom->students;
+            }
+        }
         return $students;
     }
 
