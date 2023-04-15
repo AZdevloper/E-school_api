@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,9 +21,11 @@ class ClassroomFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'subjectName' => fake()->name(),
-            'teacherName' => fake()->name(),
+            
             'NumberOfStudent' => fake()->randomNumber(),
+            'teacher_id' => User::factory(),
+            'subject_id'=> Subject::factory(),
+            
             // 'admin_id' => User::factory(),
         ];
     }

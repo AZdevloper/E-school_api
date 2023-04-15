@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Absence;
 use App\Models\Classroom;
+use App\Models\Home_work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -56,7 +57,13 @@ class statisticController extends Controller
         $now = now()->toDateString(); // get today's date in the format 'YYYY-MM-DD'
         return Absence::where('date', '>=', $now)->orderBy('date')->count();
     }
+    public function getHome_worksCount()
+    {
+       $homeWorks =  Home_work::all()->count(); // get today's date in the format 'YYYY-MM-DD'
+        return $homeWorks ;
+    }
     public function adminDashboard(){
+        $home_worksCount = $this->getHome_worksCount();
         $teachersNumber = $this->teachersCount();
         $studentsNumber = $this->studentsCount();
         $classroomNumber = $this->classroomCount();
@@ -67,12 +74,13 @@ class statisticController extends Controller
         // return json response
         return response()->json([
            [ 'id'=> 1,
+            'home_works' => $home_worksCount,
             'teachers' => $teachersNumber,
             'students' => $studentsNumber,
             'classes' => $classroomNumber,
             'events' => $eventNumber,
             // 'incomingEvents' => $incomingEvents,
-            'incomingEventsCount' => $incomingEventsCount,
+            'incomingEvents' => $incomingEventsCount,
             // 'absenceCount' => $absenceCount
             ]
         ]);
@@ -88,7 +96,18 @@ class statisticController extends Controller
         return $absences;
     }
 
+    public function getAverageMarksBySubject()
+    {
+        $results = DB::table('results')
+        ->select('subjects.id as id', 'subjects.name as subject_name', DB::raw('AVG(mark_obtained) as average_mark'))
+        ->join('subjects', 'results.subject_id', '=', 'subjects.id')
+        ->groupBy('subjects.id', 'subjects.name')
+        ->get();
 
+        return $results;
+
+        
+    }
 
 
 

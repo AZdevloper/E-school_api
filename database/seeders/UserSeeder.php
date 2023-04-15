@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class Userseeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +16,17 @@ class Userseeder extends Seeder
      */
     public function run()
     {
-        //
-        User::factory()->count(5)->create();
+        
 
+        User::factory()->count(2)->create()->each(function ($user) {
+            $user->assignRole('admin');
+        });
+
+        User::factory()->count(2)->create()->each(function ($user) {
+            $user->assignRole('teacher');
+        });
+         User::factory()->count(2)->create()->each(function ($user) {
+            $user->assignRole('student');
+        });
     }
 }

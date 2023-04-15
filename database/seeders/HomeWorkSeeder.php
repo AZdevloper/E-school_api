@@ -16,7 +16,7 @@ class HomeWorkSeeder extends Seeder
     public function run()
     {
         //
-        Home_work::factory()->count(5)->create();
+        Home_work::factory()->count(3)->create();
 
     }
 }

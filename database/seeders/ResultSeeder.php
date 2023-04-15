@@ -16,7 +16,7 @@ class Resultseeder extends Seeder
     public function run()
     {
         //
-        Result::factory()->count(5)->create();
+        Result::factory()->count(3)->create();
 
     }
 }

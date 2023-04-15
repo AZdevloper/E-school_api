@@ -22,12 +22,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // return response()->noContent();
-        return response()->json(["api_token" =>     Auth::user()->createToken('api_token')->plainTextToken]);
+        return response()->json([
+            "role"=> Auth::user()->getRoleNames(),
+            "permissions"=> Auth::user()->getAllPermissions()->pluck('name'),
+            "api_token" =>     Auth::user()->createToken('api_token')->plainTextToken]);
 
-        return response(
-            UserResource::make($request->user())->jsonSerialize(),  
-            Response::HTTP_OK
-        );
+        // return response(
+        //     UserResource::make($request->user())->jsonSerialize(),  
+        //     Response::HTTP_OK
+        // );
 
     }
 

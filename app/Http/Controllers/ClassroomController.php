@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClassroomController extends Controller
@@ -18,9 +19,20 @@ class ClassroomController extends Controller
     public function index()
     {
         //
-        $classes = Classroom::all();
+        
+        $user = Auth::user();
+        
+        if ($user->hasRole('admin')) {
+            $classes = Classroom::all();
+        } else {
+            $classes = Classroom::with('users')->where('teacher_id',$user->id)->get();
+        }
+        
        
 
+        // return $classes;
+
+        
         return $classes;
     }
 
