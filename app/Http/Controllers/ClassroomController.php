@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClassRoomCollection;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -21,11 +22,11 @@ class ClassroomController extends Controller
         //
         
         $user = Auth::user();
-        
+       
         if ($user->hasRole('admin')) {
             $classes = Classroom::all();
         } else {
-            $classes = Classroom::with('users')->where('teacher_id',$user->id)->get();
+            $classes = Classroom::with('teacher','subject')->where('teacher_id',$user->id)->get();
         }
         
        
@@ -33,7 +34,7 @@ class ClassroomController extends Controller
         // return $classes;
 
         
-        return $classes;
+        return new ClassRoomCollection($classes);
     }
 
 

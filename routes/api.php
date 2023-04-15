@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::controller(App\Http\Controllers\TeacherController::class)->group(function () {
-    Route::get('teachers', 'index');
+    Route::get('teachers', 'index')->middleware(['auth:sanctum']);;
     Route::get('teachers/{id}', 'show');
     Route::post('teachers', 'store');
     Route::put('teachers/{id}', 'update');
@@ -37,7 +37,7 @@ Route::controller(App\Http\Controllers\StudentController::class)->group(function
 })->middleware(['auth:sanctum', 'role:admin']);
 
 Route::controller(App\Http\Controllers\ClassroomController::class)->group(function () {
-    Route::get('classes', 'index');
+    Route::get('classes', 'index')->middleware(['auth:sanctum']);
     Route::get('classes/{id}', 'show');
     Route::post('classes', 'store');
     Route::put('classes/{id}', 'update');
