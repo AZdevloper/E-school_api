@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Event;
+use App\Models\Result;
 use App\Models\Absence;
 use App\Models\Classroom;
 use App\Models\Home_work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class statisticController extends Controller
 {
@@ -94,6 +96,21 @@ class statisticController extends Controller
         ->get();
 
         return $absences;
+    }
+    public function getResultForEachStudent()
+    {
+        $teacherId = Auth::user()->id;
+        $results = Result::with('student')->where('teacher_id', $teacherId)->get();
+
+        $studentsResults = $results->map(function ($result) {
+            return [
+                'id' => $result->student->id,
+                'student_name' => $result->student->name,
+                'mark_obtained' => $result->mark_obtained,
+            ];
+        });
+
+        return $studentsResults;
     }
 
     public function getAverageMarksBySubject()

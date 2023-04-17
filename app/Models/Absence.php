@@ -18,7 +18,7 @@ class Absence extends Model
 
     public function student()
     {
-        return $this->belongsTo(User::class, 'student_id')->select(['id', 'name']);
+        return $this->belongsTo(User::class, 'student_id');
     }
     public function teacher()
     {

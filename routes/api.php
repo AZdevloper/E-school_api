@@ -82,6 +82,7 @@ Route::controller(App\Http\Controllers\AbsenceController::class)->group(function
 });
 
 Route::controller(App\Http\Controllers\statisticController::class)->group(function () {
+    Route::get('getResultForEachStudent', 'getResultForEachStudent')->middleware(['auth:sanctum']);
     Route::get('getAbsencesByMonth', 'getAbsencesByMonth');
     Route::get('getHome_worksCount', 'getHome_worksCount');
     Route::get('getAverageMarksBySubject', 'getAverageMarksBySubject');
