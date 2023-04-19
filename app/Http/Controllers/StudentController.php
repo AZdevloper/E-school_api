@@ -59,8 +59,10 @@ class StudentController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
         $user->assignRole("student");
         $user->save();
+        $user->classrooms()->attach($request->class_id);
 
         return response([
             'user' => $user,
@@ -101,18 +103,28 @@ class StudentController extends Controller
             $request->validate([
                 'name' => 'string',
                 'email' => 'email|unique:users,email,' . $user->id,
-                'password' => 'min:8',
-            ]);
-
+                "class_id"=>'required'
+            ], [
+                'class_id.required' => 'The class field is required.']);
+// validate request password if not null 
+            if ($request->password){
+                $request->validate([
+                    'password' => 'min:8|confirmed',
+                ]);
+                $user->password = Hash::make($request->password);
+            }
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
             $user->update();
-
-            return $user;
+            $user->classrooms()->sync($request->class_id);
+            return response()->json([
+                "id"=>$user->id,
+                'message' => 'User updated successfully'
+            ], 200);
         } else {
 
             return response()->json([
+                "id"=>$user->id,
                 'message' => 'User not found'
             ], 404);
         }

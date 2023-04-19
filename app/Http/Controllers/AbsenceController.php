@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absence;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\AbsenceResource;
 use App\Http\Resources\Absencecollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -37,22 +39,22 @@ class AbsenceController extends Controller
     public function store(Request $request)
     {
         //
+        $teacher_id =  Auth::user()->id;
+        $teacherSubject  = Subject::where('user_id',$teacher_id)->first();
+       
         $request->validate([
             'date' => 'date_format:Y-m-d',
             'absenceHours' => 'required|integer',
             'student_id' => 'required|integer',
-            
-            'teacher_id' => 'required|integer', 
-            'subject_id'=> 'required|integer',
-          
+
         ]);
         $absence = new Absence([
             
             'date' => $request->date,
             'absenceHours' => $request->absenceHours,
             'student_id' => $request->student_id,
-            'teacher_id' => $request->teacher_id,
-            'subject_id' => $request->subject_id
+            'teacher_id' => $teacher_id,
+            'subject_id' => $teacherSubject->id
         ]);
 
         $absence->save();
@@ -92,6 +94,8 @@ class AbsenceController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $teacher_id =  Auth::user()->id;
+        $teacherSubject  = Subject::where('user_id', $teacher_id)->first();
         $absence = Absence::findOrFail($id);
         if ($absence) {
 
@@ -100,8 +104,7 @@ class AbsenceController extends Controller
                 'date' => 'date_format:Y-m-d',
                 'absenceHours' => 'required|integer',
                 'student_id' => 'required|integer',
-                'teacher_id' => 'required|integer', 
-                'subject_id'=> 'required|integer',
+              
 
             ]);
 
@@ -109,14 +112,14 @@ class AbsenceController extends Controller
                 'date' => $request->date,
                 'absenceHours' => $request->absenceHours,
                 'student_id' => $request->student_id,
-                'teacher_id' => $request->teacher_id,
-                'subject_id' => $request->subject_id
+                'teacher_id' => $teacher_id,
+                'subject_id' => $teacherSubject->id
             ]);
             return $absence;
         } else {
 
             return response()->json([
-                'message' => 'event not found'
+                'message' => 'absence not found'
             ], 404);
         }
     }

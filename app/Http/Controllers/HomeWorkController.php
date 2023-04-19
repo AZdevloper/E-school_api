@@ -21,7 +21,8 @@ class HomeWorkController extends Controller
     public function index()
     {
         //
-        $homeWorks = Home_work::with('user')->get();
+        $authTeacher = Auth::user();
+        $homeWorks = Home_work::where('teacher_id',$authTeacher->id)->get();
 
         // return response()->json(new HomeWorkCollection($homeWorks))->withoutWrapping();
         // return $homeWorks;  
@@ -38,7 +39,7 @@ class HomeWorkController extends Controller
     public function store(Request $request)
     {
         //
-        
+      $teacher_id =  Auth::user()->id;
 
         // return new JsonResource(["message" => Auth::user()]);
         
@@ -48,18 +49,18 @@ class HomeWorkController extends Controller
             'deadline'
             => [
                 'required',
-                'date_format:Y-m-d',
+                
                 'after:now',
             ],
                              
-            'user_id' => 'required|numeric',
+            
 
         ]);
         $homework = new Home_work([
             'title' => $request->title,
             'content' => $request->content,
             'deadline' => $request->deadline,
-            'user_id' => Auth::user()->id,
+            'teacher_id' => $teacher_id,
 
         ]);
 
@@ -81,7 +82,10 @@ class HomeWorkController extends Controller
     {
         //
         //
-        $homeWork = Home_work::findOrFail($id);
+        $authTeacher = Auth::user();
+       
+        $homeWork = Home_work::where('teacher_id',$authTeacher->id)->where('id',$id)->first();
+        
         if ($homeWork) {
             return $homeWork;
         } else {
@@ -103,19 +107,16 @@ class HomeWorkController extends Controller
         if ($homeWork) {
 
             $request->validate([
-                'title' => 'required|string',
-                'content' => 'required|string',
-                'deadline' =>
-                'date_format:Y-m-d H:i:s',
-                'user_id' => 'required|numeric',
-
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'deadline'=> ['required','after:now'],
             ]);
 
             $homeWork->update([
                 'title' => $request->title,
                 'content' => $request->content,
                 'deadline' => $request->deadline,
-                'user_id' => $request->user_id,
+                'teacher_id' => Auth::user()->id,
             ]);
             return $homeWork;
         } else {

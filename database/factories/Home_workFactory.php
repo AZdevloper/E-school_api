@@ -20,9 +20,9 @@ class Home_workFactory extends Factory
         return [
             //
             'title' => fake()->title(),
-            'content' => fake()->shuffleString(),
+            'content' => fake()->text(),
             'deadline' => fake()->date(),
-            'user_id' => User::factory(),
+            'teacher_id' => User::factory(),
         ];
     }
 }

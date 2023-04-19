@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Result;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ResultCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ResultController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -34,17 +37,17 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         //
+        $teacher_id =  Auth::user()->id;
         $request->validate([
             'mark_obtained' => 'required|numeric',
-            'student_id' => 'required|numeric',
-            'teacher_id' => 'required|numeric',
-            'subject_id' => 'required|numeric',
+            'student_id'    => 'required|numeric',
+            'subject_id'    => 'required|numeric',
 
         ]);
         $Result = new Result([
             'mark_obtained' => $request->mark_obtained,
             'student_id' => $request->student_id,
-            'teacher_id' => $request->teacher_id,
+            'teacher_id' =>  $teacher_id, 
             'subject_id' => $request->subject_id,
             
 
@@ -141,5 +144,11 @@ class ResultController extends Controller
         } else {
             return new JsonResource(["message" => "not found"], 404);
         }
+    }
+    public function getSubjects(){
+        $teacher_id =  Auth::user()->id;
+        $subjects = Subject::where('user_id',$teacher_id)->get();
+        
+        return $subjects;
     }
 }

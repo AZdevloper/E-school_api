@@ -12,11 +12,11 @@ class Home_work extends Model
         'title',
         'content',
         'deadline',
-        'user_id',
+        'teacher_id',
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'teacher_id');
     }
 
 }

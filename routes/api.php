@@ -55,15 +55,16 @@ Route::controller(App\Http\Controllers\EventController::class)->group(function (
 })->middleware(['auth:sanctum', 'role:admin']);
 
 Route::controller(App\Http\Controllers\HomeWorkController::class)->group(function () {
-    Route::get('homeworks', 'index');
-    Route::get('homeworks/{id}', 'show');
-    Route::post('homeworks', 'store');
-    Route::put('homeworks/{id}', 'update');
-    Route::delete('homeworks/{id}', 'destroy');
+    Route::get('homeworks', 'index')->middleware(['auth:sanctum']);
+    Route::get('homeworks/{id}', 'show')->middleware(['auth:sanctum']);
+    Route::post('homeworks', 'store')->middleware(['auth:sanctum']);
+    Route::put('homeworks/{id}', 'update')->middleware(['auth:sanctum']);
+    Route::delete('homeworks/{id}', 'destroy')->middleware(['auth:sanctum']);
     // Route::get('homeworks/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
-})->middleware(['auth:sanctum', 'role:admin']);
+});
 
 Route::controller(App\Http\Controllers\ResultController::class)->group(function () {
+    Route::get('subjects', 'getSubjects')->middleware(['auth:sanctum']);
     Route::get('results', 'index');
     Route::get('results/{id}', 'show');
     Route::post('results', 'store');
@@ -75,8 +76,8 @@ Route::controller(App\Http\Controllers\ResultController::class)->group(function 
 Route::controller(App\Http\Controllers\AbsenceController::class)->group(function () {
     Route::get('absences', 'index');
     Route::get('absences/{id}', 'show');
-    Route::post('absences', 'store');
-    Route::put('absences/{id}', 'update');
+    Route::post('absences', 'store')->middleware(['auth:sanctum']);
+    Route::put('absences/{id}', 'update')->middleware(['auth:sanctum']);
     Route::delete('absences/{id}', 'destroy');
     // Route::get('results/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);
 });
