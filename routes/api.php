@@ -67,7 +67,7 @@ Route::controller(App\Http\Controllers\ResultController::class)->group(function 
     Route::get('subjects', 'getSubjects')->middleware(['auth:sanctum']);
     Route::get('results', 'index');
     Route::get('results/{id}', 'show');
-    Route::post('results', 'store');
+    Route::post('results', 'store')->middleware(['auth:sanctum']);
     Route::put('results/{id}', 'update');
     Route::delete('results/{id}', 'destroy');
     // Route::get('results/category/{id}', 'filter')->middleware(['auth:sanctum', 'permission:filter teachers']);

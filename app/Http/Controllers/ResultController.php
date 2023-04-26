@@ -38,17 +38,17 @@ class ResultController extends Controller
     {
         //
         $teacher_id =  Auth::user()->id;
+        $teacherSubject  = Subject::where('user_id', $teacher_id)->first();
         $request->validate([
-            'mark_obtained' => 'required|numeric',
+            'mark_obtained' => 'required|numeric|max:20|min:0',
             'student_id'    => 'required|numeric',
-            'subject_id'    => 'required|numeric',
 
         ]);
         $Result = new Result([
             'mark_obtained' => $request->mark_obtained,
             'student_id' => $request->student_id,
             'teacher_id' =>  $teacher_id, 
-            'subject_id' => $request->subject_id,
+            'subject_id' => $teacherSubject->id,
             
 
         ]);

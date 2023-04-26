@@ -113,6 +113,7 @@ class StudentController extends Controller
                 ]);
                 $user->password = Hash::make($request->password);
             }
+
             $user->name = $request->name;
             $user->email = $request->email;
             $user->update();
@@ -121,6 +122,7 @@ class StudentController extends Controller
                 "id"=>$user->id,
                 'message' => 'User updated successfully'
             ], 200);
+
         } else {
 
             return response()->json([
