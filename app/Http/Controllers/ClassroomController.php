@@ -49,18 +49,18 @@ class ClassroomController extends Controller
         //
         $request->validate([
             'name' => 'required|string',
-            'subjectName' => 'required|string',
-            'teacherName' => 'required|string',
-            'NumberOfStudent' => 'required|string',
+           
+            'teacher_id' => 'required',
+            'teacher_id' => 'required',
             // 'user_id' => 'required',
 
         ]);
         $class = new Classroom([
             'name' => $request->name,
-            'subjectName' => $request->subjectName,
-            'teacherName' => $request->teacherName,
             'NumberOfStudent' => $request->NumberOfStudent,
-            // 'user_id' => $request->user_id,
+            'teacher_id' => $request->teacher_id,
+            'subject_id' => $request->subject_id,
+            
             
         ]);
 
@@ -106,19 +106,15 @@ class ClassroomController extends Controller
 
             $request->validate([
                 'name' => 'required|string',
-                'subjectName' => 'required|string',
-                'teacherName' => 'required|string',
-                'NumberOfStudent' => 'required|numeric',
-                // 'user_id' => 'required',
-
+                'teacher_id' => 'required',
+                'teacher_id' => 'required',
             ]);
 
             $class->update([
                 'name' => $request->name,
-                'subjectName' => $request->subjectName,
-                'teacherName' => $request->teacherName,
                 'NumberOfStudent' => $request->NumberOfStudent,
-                // 'user_id' => $request->user_id,
+                'teacher_id' => $request->teacher_id,
+                'subject_id' => $request->subject_id,
             ]);
             return $class;
 

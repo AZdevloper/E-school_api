@@ -10,10 +10,9 @@ class Classroom extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        "subjectName",
-        "teacherName",
         "NumberOfStudent",
-        "user_id",
+        "subject_id",
+        "teacher_id",
 
     ];
   

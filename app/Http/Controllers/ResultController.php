@@ -38,6 +38,7 @@ class ResultController extends Controller
     {
         //
         $teacher_id =  Auth::user()->id;
+        
         $teacherSubject  = Subject::where('user_id', $teacher_id)->first();
         $request->validate([
             'mark_obtained' => 'required|numeric|max:20|min:0',
@@ -146,8 +147,8 @@ class ResultController extends Controller
         }
     }
     public function getSubjects(){
-        $teacher_id =  Auth::user()->id;
-        $subjects = Subject::where('user_id',$teacher_id)->get();
+       
+        $subjects = Subject::all();
         
         return $subjects;
     }
